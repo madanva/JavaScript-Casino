@@ -1,0 +1,22 @@
+{
+  "name": "javascript-casino",
+  "version": "1.0.0",
+  "description": "A small sample project in Javascript",
+  "main": "project.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madanva/JavaScript-Casino.git"
+  },
+  "author": "Varun Madan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madanva/JavaScript-Casino/issues"
+  },
+  "homepage": "https://github.com/madanva/JavaScript-Casino#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
