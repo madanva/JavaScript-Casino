@@ -118,10 +118,11 @@ const getWinnings = (rows, bet, lines) => {
         const symbols = rows[row];
         let allSame = true;
 
-        for (const symbol of symbols) {
-            if (symbol != symbols[0]) {
-                allSame = false;
-                break;
+        while (allSame === true) {
+            for (const symbol of symbols) {
+                if (symbol != symbols[0]) {
+                    allSame = false;
+                }
             }
         }
 
@@ -134,7 +135,7 @@ const getWinnings = (rows, bet, lines) => {
 const game = () => {
     let balance = deposit();
     let playAgain = true;
-    while (balance > 0 || playAgain === false) {
+    while (balance > 0 && playAgain === true) {
         const numOfLines = getNumOfLines();
         const bet = getBet(balance, numOfLines);
         balance = balance - bet * numOfLines
@@ -142,13 +143,13 @@ const game = () => {
         const rows = transpose(reels);
         printRows(rows);
         const winnings = getWinnings(rows, bet, numOfLines);
-        console.log((winnings == 0) ? "Sorry you didn't win anything this time, spin again!" : ("you won $ " + winnings + "!"))
+        console.log((winnings == 0) ? "Sorry you didn't win anything this time!" : ("you won $ " + winnings + "!"))
         balance = balance + winnings;
         console.log("balance remaining: $" + balance);
-        (prompt("Do you want to play again (y/n)? ") != "y") && (playAgain = false);
+        balance > 0 && (prompt("Do you want to play again (y/n)? ") != "y") && (playAgain = false);
     }
 
-    
+    (prompt("Do you want to deposit more money (y/n)? ") === 'y') && game();
 };
 
 game();
